@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Perimatietokanta</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Kirjan nimi</th>
+                <th>Kirjan kirjoittaja</th>
+            </tr>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.name}">book name</td>
+                <td th:text="${book.author}">author name</td>
+            </tr>
+        </table>
+    </body>
+</html>

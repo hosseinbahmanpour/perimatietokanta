@@ -14,7 +14,7 @@ public class Narration extends AbstractPersistable<Long> {
     private Narrator narrator;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Book book;
+    private Source source;
 
     public String getContent() {
         return content;
@@ -32,11 +32,11 @@ public class Narration extends AbstractPersistable<Long> {
         this.narrator = narrator;
     }
 
-    public Book getBook() {
-        return book;
+    public Source getSource() {
+        return source;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setSource(Source source) {
+        this.source = source;
     }
 }
