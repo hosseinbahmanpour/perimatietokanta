@@ -13,34 +13,34 @@ import wad.repository.SourceRepository;
 
 @Controller
 @RequestMapping(value = "/books")
-public class BookController {
+public class SourceController {
 
     @Autowired
-    private SourceRepository bookRepo;
+    private SourceRepository sourceRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getBooks(Model model) {
-        model.addAttribute("books", bookRepo.findAll());
-        return "books";
+    public String getSources(Model model) {
+        model.addAttribute("sources", sourceRepository.findAll());
+        return "sources";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String getBook(Model model, @PathVariable Long id) {
-        model.addAttribute("nby", bookRepo.findOne(id));
-        return "narratedby";
+        model.addAttribute("source", sourceRepository.findOne(id));
+        return "book";
     }
 
     @Secured("hasRole('ADMIN')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable Long id) {
-        bookRepo.delete(id);
+        sourceRepository.delete(id);
         return "redirect:/books";
     }
 
     @Secured("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public String postBook(@RequestBody Source book) {
-        bookRepo.save(book);
+        sourceRepository.save(book);
         return "redirect:/books";
     }
 }

@@ -1,58 +1,43 @@
 package wad.domain;
 
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Source extends AbstractPersistable<Long> {
 
-    private String book;
-    private String author;
-    private int volume;
-    private int page;
+    @OneToOne(mappedBy = "source")
+    private Narration narration;
 
-    @OneToMany(mappedBy = "source")
-    private List<Narration> narrations;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Book book;
 
-    public String getBook() {
+    private String page;
+
+    public Narration getNarration() {
+        return narration;
+    }
+
+    public void setNarration(Narration narration) {
+        this.narration = narration;
+    }
+
+    public Book getBook() {
         return book;
     }
 
-    public void setBook(String book) {
+    public void setBook(Book book) {
         this.book = book;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public int getPage() {
+    public String getPage() {
         return page;
     }
 
-    public void setPage(int page) {
+    public void setPage(String page) {
         this.page = page;
-    }
-
-    public List<Narration> getNarrations() {
-        return narrations;
-    }
-
-    public void setNarrations(List<Narration> narrations) {
-        this.narrations = narrations;
     }
 }

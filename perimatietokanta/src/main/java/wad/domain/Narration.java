@@ -3,6 +3,7 @@ package wad.domain;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
@@ -13,7 +14,7 @@ public class Narration extends AbstractPersistable<Long> {
     @ManyToOne(fetch = FetchType.LAZY)
     private Narrator narrator;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne (mappedBy = "narration")
     private Source source;
 
     public String getContent() {
