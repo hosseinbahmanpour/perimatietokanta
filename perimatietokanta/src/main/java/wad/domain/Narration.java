@@ -3,19 +3,19 @@ package wad.domain;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Narration extends AbstractPersistable<Long> {
 
     private String content;
+    private String source;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Narrator narrator;
-
-    @OneToOne (mappedBy = "narration")
-    private Source source;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Theme theme;
 
     public String getContent() {
         return content;
@@ -23,6 +23,14 @@ public class Narration extends AbstractPersistable<Long> {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public Narrator getNarrator() {
@@ -33,11 +41,11 @@ public class Narration extends AbstractPersistable<Long> {
         this.narrator = narrator;
     }
 
-    public Source getSource() {
-        return source;
+    public Theme getTheme() {
+        return theme;
     }
 
-    public void setSource(Source source) {
-        this.source = source;
+    public void setTheme(Theme theme) {
+        this.theme = theme;
     }
 }
