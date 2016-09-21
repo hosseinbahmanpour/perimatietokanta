@@ -21,7 +21,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        // ohjelma on tarkoitettu vain adminille toistaiseksi
+        // ohjelman muokkaustoiminnot on tarkoitettu vain adminille
         auth.inMemoryAuthentication()
                 .withUser("hossein").password("erittäinsalainen").roles("ADMIN");
     }
