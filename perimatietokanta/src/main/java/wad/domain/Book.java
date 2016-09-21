@@ -4,9 +4,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
-public class Book {
+public class Book extends AbstractPersistable<Long> {
     
     @NotBlank
     private String title;

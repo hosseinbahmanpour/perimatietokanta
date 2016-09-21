@@ -8,10 +8,12 @@
             <tr>
                 <th>Kirjan nimi</th>
                 <th>Kirjan kirjoittaja</th>
+                <th>Kirjan teosnumero</th>
             </tr>
             <tr th:each="book : ${books}">
-                <td th:text="${book.name}">book name</td>
+                <td th:text="${book.title}">book title</td>
                 <td th:text="${book.author}">author name</td>
+                <td th:text="${book.volume}">teosnumero</td>
             </tr>
         </table>
     </body>
