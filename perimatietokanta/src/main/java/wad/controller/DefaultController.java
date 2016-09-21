@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import wad.domain.Book;
 import wad.domain.Narration;
 import wad.domain.Narrator;
 import wad.domain.Theme;
+import wad.repository.BookRepository;
 import wad.repository.NarrationRepository;
 import wad.repository.NarratorRepository;
 import wad.repository.ThemeRepository;
@@ -15,6 +17,9 @@ import wad.repository.ThemeRepository;
 @Controller
 @RequestMapping(value = "*")
 public class DefaultController {
+    
+    @Autowired
+    private BookRepository bookRepo;
     @Autowired
     private NarrationRepository narrationRepo;
     @Autowired
@@ -33,11 +38,18 @@ public class DefaultController {
         theme.setTheme("test theme");
         themeRepo.save(theme);
 
+        Book book = new Book();
+        book.setTitle("test book title");
+        book.setAuthor("test book author");
+        book.setVolume(1);
+        bookRepo.save(book);
+        
         Narration narration = new Narration();
         narration.setNarrator(narrator);
         narration.setTheme(theme);
+        narration.setBook(book);
         narration.setContent("test narration content, bla bla bla.");
-        narration.setSource("test source of narration");
+        narration.setSourcePage(1);
         narrationRepo.save(narration);
     }
 
