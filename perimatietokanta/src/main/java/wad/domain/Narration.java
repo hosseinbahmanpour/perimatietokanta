@@ -9,20 +9,15 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Narration extends AbstractPersistable<Long> {
 
-    @NotBlank
     private String content;
-    @NotBlank
     private int sourcePage;
 
-    @NotBlank
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
     
-    @NotBlank
     @ManyToOne(fetch = FetchType.LAZY)
     private Narrator narrator;
     
-    @NotBlank
     @ManyToOne(fetch = FetchType.LAZY)
     private Theme theme;
 

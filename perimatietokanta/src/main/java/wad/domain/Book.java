@@ -9,14 +9,11 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Book extends AbstractPersistable<Long> {
     
-    @NotBlank
     private String title;
-    @NotBlank
     private String author;
-    @NotBlank
     private int volume;
     
-    @OneToMany(mappedBy = "title")
+    @OneToMany(mappedBy = "book")
     private List<Narration> narrations;
 
     public String getTitle() {

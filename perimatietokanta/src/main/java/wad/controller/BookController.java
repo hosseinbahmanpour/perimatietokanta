@@ -14,9 +14,9 @@ public class BookController {
     @Autowired
     private BookRepository bookRepo;
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.GET)
     public String view(Model model) {
         model.addAttribute("books", bookRepo.findAll());
-        return "/books";
+        return "books";
     }
 }
