@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Perimätiedot</title>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>Kertoja</th>
+                <th>Teema</th>
+                <th>Kirja</th>
+                <th>Sivunumero</th>
+                <th>Sisältö</th>
+            </tr>
+            <tr th:each="narration : ${narrations}">
+                <td th:text="${narration.narrator.name}">Kertoja</td>
+                <td th:text="${narration.theme.theme}">Teema</td>
+                <td th:text="${narration.book.title}">Kirja</td>
+                <td th:text="${narration.page}">Sivunumero</td>
+                <td th:text="${narration.content}">Sisältö</td>
+            </tr>
+        </table>
+    </body>
+</html>

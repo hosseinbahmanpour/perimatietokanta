@@ -41,7 +41,6 @@ public class DefaultController {
         Book book = new Book();
         book.setTitle("test book title");
         book.setAuthor("test book author");
-        book.setVolume(1);
         bookRepo.save(book);
         
         Narration narration = new Narration();
@@ -49,7 +48,7 @@ public class DefaultController {
         narration.setTheme(theme);
         narration.setBook(book);
         narration.setContent("test narration content, bla bla bla.");
-        narration.setSourcePage(1);
+        narration.setPage(1);
         narrationRepo.save(narration);
     }
 

@@ -11,7 +11,6 @@ public class Book extends AbstractPersistable<Long> {
     
     private String title;
     private String author;
-    private int volume;
     
     @OneToMany(mappedBy = "book")
     private List<Narration> narrations;
@@ -30,14 +29,6 @@ public class Book extends AbstractPersistable<Long> {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
     }
 
     public List<Narration> getNarrations() {

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Teemat</title>
+    </head>
+    <body>
+        <div>        
+            <table>
+                <tr>
+                    <th>Teema</th>
+                </tr>
+                <tr th:each="theme : ${themes}">
+                    <td><a th:href="@{/themes/{themeId}(themeId=${theme.id})}" th:text="${theme.theme}"></a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

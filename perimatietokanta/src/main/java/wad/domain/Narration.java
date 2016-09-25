@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Narration extends AbstractPersistable<Long> {
 
     private String content;
-    private int sourcePage;
+    private int page;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
@@ -29,12 +29,12 @@ public class Narration extends AbstractPersistable<Long> {
         this.content = content;
     }
 
-    public int getSourcePage() {
-        return sourcePage;
+    public int getPage() {
+        return page;
     }
 
-    public void setSourcePage(int sourcePage) {
-        this.sourcePage = sourcePage;
+    public void setPage(int sourcePage) {
+        this.page = sourcePage;
     }
 
     public Book getBook() {

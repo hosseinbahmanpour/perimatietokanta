@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Kertojat</title>
+    </head>
+    <body>
+        <div>        
+            <table>
+                <tr>
+                    <th>Kertojan nimi</th>
+                </tr>
+                <tr th:each="narrator : ${narrators}">
+                    <td><a th:href="@{/narrators/{narratorId}(narratorId=${narrator.id})}" th:text="${narrator.name}"></a></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
