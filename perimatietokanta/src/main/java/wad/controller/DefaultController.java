@@ -56,9 +56,4 @@ public class DefaultController {
     public String view() {
         return "index";
     }
-    
-    @RequestMapping(value = "/admin", method = RequestMethod.GET) 
-    public String login() {
-        return "redirect:/login";
-    }
 }
