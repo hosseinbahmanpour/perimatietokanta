@@ -24,10 +24,23 @@
             </form>
         </div>
         <div>
-         <select name="to">
-                <option th:each="account: ${accounts}" th:value="${account.iban}" 
-                        th:text="${account.iban}" >Options</option>
-            </select>
+            <form th:action="@{/admin/narration}" method="POST">
+                <input type="text" value="content" name="content"/>
+                <input type="text" value="page" name="page"/>
+                <select name="book">
+                    <option th:each="book: ${books}" th:value="${book.id}" 
+                            th:text="${book.title}" ></option>
+                </select>
+                <select name="narrator">
+                    <option th:each="narrator: ${narrators}" th:value="${narrator.id}" 
+                            th:text="${narrator.name}" ></option>
+                </select>
+                <select name="theme">
+                    <option th:each="theme: ${themes}" th:value="${theme.id}" 
+                            th:text="${theme.theme}" ></option>
+                </select>
+                <input type="submit" value="Luo uusi perimätieto"/> 
+            </form>
         </div>
     </body>
 </html>

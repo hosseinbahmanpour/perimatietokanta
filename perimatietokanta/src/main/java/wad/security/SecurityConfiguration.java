@@ -18,7 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/books/**").permitAll()
                 .antMatchers("/narrators/**").permitAll()
                 .antMatchers("/themes/**").permitAll()
-                .antMatchers("/admin").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();                
          http.formLogin().permitAll().and()
                 .logout().permitAll();
