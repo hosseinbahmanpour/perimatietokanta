@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin</title>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div> 
+            <form th:action="@{/admin/book}" method="POST">
+                <input type="text" value="title" name="title"/>
+                <input type="text" value="author" name="author"/>
+                <input type="submit" value="Luo uusi kirja"/>            
+            </form>
+        </div>
+        <div> 
+            <form th:action="@{/admin/narrator}" method="POST">
+                <input type="text" value="name" name="name"/>
+                <input type="submit" value="Luo uusi kertoja"/>            
+            </form>
+        </div>
+        <div> 
+            <form th:action="@{/admin/theme}" method="POST">
+                <input type="text" value="theme" name="teema"/>
+                <input type="submit" value="Luo uusi teema"/>            
+            </form>
+        </div>
+        <div>
+         <select name="to">
+                <option th:each="account: ${accounts}" th:value="${account.iban}" 
+                        th:text="${account.iban}" >Options</option>
+            </select>
+        </div>
     </body>
 </html>

@@ -16,13 +16,13 @@ public class NarratorController {
     private NarratorRepository narratorRepo;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String listBooks(Model model) {
+    public String listThemes(Model model) {
         model.addAttribute("narrators", narratorRepo.findAll());
         return "narrators";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public String getBook(@PathVariable Long id, Model model) {
+    public String getTheme(@PathVariable Long id, Model model) {
         model.addAttribute("narrations", narratorRepo.findOne(id).getNarrations());
         return "narrations";
     }

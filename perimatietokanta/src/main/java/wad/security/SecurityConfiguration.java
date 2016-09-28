@@ -14,10 +14,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("*").permitAll()
-                .antMatchers("/books").permitAll()
-                .antMatchers("/narrators").permitAll()
-                .antMatchers("/themes").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/books/*").permitAll()
+                .antMatchers("/narrators/*").permitAll()
+                .antMatchers("/themes/*").permitAll()
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();                
          http.formLogin().permitAll().and()
@@ -28,6 +28,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // ohjelman muokkaustoiminnot on tarkoitettu vain adminille
         auth.inMemoryAuthentication()
-                .withUser("hossein").password("erittäinsalainen").roles("ADMIN");
+                .withUser("hossein").password("erittäinsalainen").authorities("ADMIN");
     }
 }

@@ -3,7 +3,6 @@ package wad.domain;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity

@@ -15,7 +15,7 @@ import wad.repository.NarratorRepository;
 import wad.repository.ThemeRepository;
 
 @Controller
-@RequestMapping(value = "*")
+@RequestMapping(value = "/")
 public class DefaultController {
     
     @Autowired
