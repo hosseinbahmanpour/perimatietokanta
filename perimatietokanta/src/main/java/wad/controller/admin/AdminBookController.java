@@ -51,7 +51,7 @@ public class AdminBookController {
 
         narrations.stream().forEach((n) -> {
             narratorRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
-            themeRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            themeRepo.findOne(n.getTheme().getId()).getNarrations().remove(n);
             narrationRepo.delete(n);
         });
 

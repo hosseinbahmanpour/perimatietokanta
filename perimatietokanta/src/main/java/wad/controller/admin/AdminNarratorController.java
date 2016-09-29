@@ -47,8 +47,8 @@ public class AdminNarratorController {
         Collection<Narration> narrations = narrationRepo.findByNarrator(narratorRepo.findOne(id));
 
         narrations.stream().forEach((n) -> {
-            bookRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
-            themeRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            bookRepo.findOne(n.getBook().getId()).getNarrations().remove(n);
+            themeRepo.findOne(n.getTheme().getId()).getNarrations().remove(n);
             narrationRepo.delete(n);
         });
         

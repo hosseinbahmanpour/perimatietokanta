@@ -52,20 +52,25 @@ public class AdminNarrationController {
 
     @RequestMapping(value = "editnarration/{id}", method = RequestMethod.GET)
     public String viewNarrationEditor(@PathVariable Long id, Model model) {
+
         model.addAttribute("narration", narrationRepo.findOne(id));
+        model.addAttribute("books", bookRepo.findAll());
+        model.addAttribute("narrators", narratorRepo.findAll());
+        model.addAttribute("themes", themeRepo.findAll());
+
         return "editnarration";
     }
 
     @RequestMapping(value = "editnarration/{id}", method = RequestMethod.POST)
     public String editNarration(@PathVariable Long id,
             @RequestParam String content, @RequestParam Long book,
-            @RequestParam Long narrator, @RequestParam Long theme) {
+            @RequestParam Long narrator) {
 
         Narration narration = narrationRepo.findOne(id);
         narration.setContent(content);
         narration.setBook(bookRepo.findOne(book));
         narration.setNarrator(narratorRepo.findOne(narrator));
-        narration.setTheme(themeRepo.findOne(theme));
+//        narration.setTheme(themeRepo.findOne(theme));
         narrationRepo.save(narration);
 
         return "index";
