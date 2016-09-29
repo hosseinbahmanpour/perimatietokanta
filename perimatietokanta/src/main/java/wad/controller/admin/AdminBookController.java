@@ -1,4 +1,4 @@
-package wad.controller;
+package wad.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import wad.domain.Book;
 import wad.repository.BookRepository;
-import wad.repository.ThemeRepository;
 
 @Controller
 @RequestMapping(value = "admin")
@@ -31,18 +30,14 @@ public class AdminBookController {
     }
 
     @RequestMapping(value = "books/{id}", method = RequestMethod.DELETE)
-    public String deleteBook(@PathVariable Long id) {
-        
-        bookRepo.delete(id);
-        
+    public String deleteBook(@PathVariable Long id) {        
+        bookRepo.delete(id);        
         return "redirect:/books";
     }
 
     @RequestMapping(value = "editbook/{id}", method = RequestMethod.GET)
-    public String viewBookEditor(@PathVariable Long id, Model model) {
-        
-        model.addAttribute("book", bookRepo.findOne(id));
-        
+    public String viewBookEditor(@PathVariable Long id, Model model) {        
+        model.addAttribute("book", bookRepo.findOne(id));        
         return "editbook";
     }
 

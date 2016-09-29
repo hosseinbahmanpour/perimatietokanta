@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Theme extends AbstractPersistable<Long> {
 
-    @NotBlank
     private String theme;
 
     @OneToMany(mappedBy = "theme")

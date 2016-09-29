@@ -9,7 +9,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Narrator extends AbstractPersistable<Long> {
 
-    @NotBlank
     private String name;
 
     @OneToMany(mappedBy = "narrator")

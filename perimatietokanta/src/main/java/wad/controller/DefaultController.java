@@ -34,24 +34,23 @@ public class DefaultController {
     public void init() {
 
         Narrator narrator = new Narrator();
-        narrator.setName("test narrator name");
+        narrator.setName("Imam Ali");
         narratorRepo.save(narrator);
 
         Theme theme = new Theme();
-        theme.setTheme("test theme");
+        theme.setTheme("Koettelemus");
         themeRepo.save(theme);
 
         Book book = new Book();
-        book.setTitle("test book title");
-        book.setAuthor("test book author");
+        book.setTitle("Bihar al-Anwar");
+        book.setAuthor("Muhammad Baqir");
         bookRepo.save(book);
         
         Narration narration = new Narration();
         narration.setNarrator(narrator);
         narration.setTheme(theme);
         narration.setBook(book);
-        narration.setContent("test narration content, bla bla bla.");
-        narration.setPage(1);
+        narration.setContent("Koettelemusten kautta ihminen saavuttaa paratiisin.");
         narrationRepo.save(narration);
     }
 
