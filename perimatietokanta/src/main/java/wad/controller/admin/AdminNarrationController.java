@@ -31,8 +31,8 @@ public class AdminNarrationController {
 
     @RequestMapping(value = "narration", method = RequestMethod.POST)
     public String createNarration(@RequestParam String content,
-            @RequestParam Long theme, @RequestParam Long narrator,
-            @RequestParam Long book) {
+            @RequestParam Long book, @RequestParam Long narrator,
+            @RequestParam Long theme) {
 
         Narration narration = new Narration();
         narration.setContent(content);
@@ -41,13 +41,13 @@ public class AdminNarrationController {
         narration.setTheme(themeRepo.findOne(theme));
         narrationRepo.save(narration);
 
-        return "redirect:/index";
+        return "index";
     }
 
     @RequestMapping(value = "narration/{id}", method = RequestMethod.DELETE)
     public String deleteNarration(@PathVariable Long id) {
-        bookRepo.delete(id);
-        return "redirect:/index";
+        narrationRepo.delete(id);
+        return "index";
     }
 
     @RequestMapping(value = "editnarration/{id}", method = RequestMethod.GET)
@@ -58,8 +58,8 @@ public class AdminNarrationController {
 
     @RequestMapping(value = "editnarration/{id}", method = RequestMethod.POST)
     public String editNarration(@PathVariable Long id,
-            @RequestParam String content, @RequestParam Long theme,
-            @RequestParam Long narrator, @RequestParam Long book) {
+            @RequestParam String content, @RequestParam Long book,
+            @RequestParam Long narrator, @RequestParam Long theme) {
 
         Narration narration = narrationRepo.findOne(id);
         narration.setContent(content);
@@ -68,6 +68,6 @@ public class AdminNarrationController {
         narration.setTheme(themeRepo.findOne(theme));
         narrationRepo.save(narration);
 
-        return "redirect:/index";
+        return "index";
     }
 }

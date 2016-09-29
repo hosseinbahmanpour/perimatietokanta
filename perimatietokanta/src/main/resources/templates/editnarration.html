@@ -27,7 +27,8 @@
                 <select name="theme">
                     <option th:each="theme: ${themes}" th:value="${theme.id}" 
                             th:text="${theme.theme}" ></option>
-                </select>          
+                </select>       
+                <input type="submit" value="Tallenna muutokset"/> 
             </form>
         </div>
     </body>
