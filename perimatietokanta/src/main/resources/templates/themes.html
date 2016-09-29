@@ -6,11 +6,11 @@
         <title>Teemat</title>
     </head>
     <body>
+        <a th:href="@{/}" th:text="Etusivu"></a>
         <a th:href="@{/books}" th:text="Kirjat"></a>
         <a th:href="@{/narrators}" th:text="Kertojat"></a>
         <a th:href="@{/themes}" th:text="Teemat"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
-        <a th:href="@{/logout}" th:text="Logout"></a>
         <div>     
             <br></br>
             <table>
@@ -25,7 +25,7 @@
                         <a th:href="@{/admin/edittheme/{themeId}(themeId=${theme.id})}"><input type="submit" value="Muokkaa"/></a>
                     </td>
                     <td>
-                        <form th:action="@{/admin/edittheme/{themeId}(themeId=${theme.id})}" th:method="DELETE">
+                        <form th:action="@{/admin/theme/{themeId}(themeId=${theme.id})}" th:method="DELETE">
                             <input type="submit" value="Poista" th:id="${'remove-' + theme.id}"/>
                         </form>
                     </td>

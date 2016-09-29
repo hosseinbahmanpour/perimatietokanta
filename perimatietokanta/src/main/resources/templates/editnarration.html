@@ -6,16 +6,16 @@
         <title>Muokkaa perimätietoa</title>
     </head>
     <body>
+        <a th:href="@{/}" th:text="Etusivu"></a>
         <a th:href="@{/books}" th:text="Kirjat"></a>
         <a th:href="@{/narrators}" th:text="Kertojat"></a>
         <a th:href="@{/themes}" th:text="Teemat"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
-        <a th:href="@{/logout}" th:text="Logout"></a>
         <div> 
             <br></br>
             <p>Muokkaa perimätietoa</p>
             <form th:action="@{/admin/editnarration/{narrationId}(narrationId=${narration.id})}" method="POST">
-                <input type="text" size="128" th:placeholder="${narration.content}" name="content"/><br></br><br></br>
+                <input type="text" size="128" th:value="${narration.content}" name="content"/><br></br><br></br>
                 <select name="book">
                     <option th:each="book: ${books}" th:value="${book.id}" 
                             th:text="${book.title}" ></option>

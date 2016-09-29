@@ -2,6 +2,8 @@ package wad.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,4 +26,27 @@ public class AdminThemeController {
         
         return "redirect:/themes";
     }
+
+    @RequestMapping(value = "theme/{id}", method = RequestMethod.DELETE)
+    public String deleteTheme(@PathVariable Long id) {        
+        themeRepo.delete(id);        
+        return "redirect:/themes";
+    }
+
+    @RequestMapping(value = "edittheme/{id}", method = RequestMethod.GET)
+    public String viewThemeEditor(@PathVariable Long id, Model model) {        
+        model.addAttribute("theme", themeRepo.findOne(id));        
+        return "edittheme";
+    }
+
+    @RequestMapping(value = "edittheme/{id}", method = RequestMethod.POST)
+    public String editTheme(@PathVariable Long id, @RequestParam String theme, Model model) {
+        
+        Theme teema = themeRepo.findOne(id);
+        teema.setTheme(theme);
+        themeRepo.save(teema);
+        
+        return "redirect:/themes";
+    }
 }
+

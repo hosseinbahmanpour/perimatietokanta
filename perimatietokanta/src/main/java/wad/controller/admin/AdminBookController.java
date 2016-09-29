@@ -29,7 +29,7 @@ public class AdminBookController {
         return "redirect:/books";
     }
 
-    @RequestMapping(value = "books/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "book/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable Long id) {        
         bookRepo.delete(id);        
         return "redirect:/books";

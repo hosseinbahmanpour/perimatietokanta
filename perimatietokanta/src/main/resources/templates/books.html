@@ -6,11 +6,11 @@
         <title>Kirjat</title>
     </head>
     <body>
+        <a th:href="@{/}" th:text="Etusivu"></a>
         <a th:href="@{/books}" th:text="Kirjat"></a>
         <a th:href="@{/narrators}" th:text="Kertojat"></a>
         <a th:href="@{/themes}" th:text="Teemat"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
-        <a th:href="@{/logout}" th:text="Logout"></a>
         <div>   
             <br></br>
             <table>
@@ -27,7 +27,7 @@
                         <a th:href="@{/admin/editbook/{bookId}(bookId=${book.id})}"><input type="submit" value="Muokkaa"/></a>
                     </td>
                     <td>
-                        <form th:action="@{/admin/editbook/{bookId}(bookId=${book.id})}" th:method="DELETE">
+                        <form th:action="@{/admin/book/{bookId}(bookId=${book.id})}" th:method="DELETE">
                             <input type="submit" value="Poista" th:id="${'remove-' + book.id}"/>
                         </form>
                     </td>

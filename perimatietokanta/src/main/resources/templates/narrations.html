@@ -6,11 +6,11 @@
         <title>Perimätiedot</title>
     </head>
     <body>
+        <a th:href="@{/}" th:text="Etusivu"></a>
         <a th:href="@{/books}" th:text="Kirjat"></a>
         <a th:href="@{/narrators}" th:text="Kertojat"></a>
         <a th:href="@{/themes}" th:text="Teemat"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
-        <a th:href="@{/logout}" th:text="Logout"></a>
         <div>
             <br></br>
             <table>
@@ -28,10 +28,10 @@
                     <td th:text="${narration.theme.theme}">Teema</td>
                     <td th:text="${narration.content}">Sisältö</td>
                     <td>
-                        <a th:href="@{/admin/edinarration/{narrationId}(narrationId=${narration.id})}"><input type="submit" value="Muokkaa"/></a>
+                        <a th:href="@{/admin/editnarration/{narrationId}(narrationId=${narration.id})}"><input type="submit" value="Muokkaa"/></a>
                     </td>
                     <td>
-                        <form th:action="@{/admin/edinarration/{narrationId}(narrationId=${narration.id})}" th:method="DELETE">
+                        <form th:action="@{/admin/narration/{narrationId}(narrationId=${narration.id})}" th:method="DELETE">
                             <input type="submit" value="Poista" th:id="${'remove-' + narration.id}"/>
                         </form>
                     </td>

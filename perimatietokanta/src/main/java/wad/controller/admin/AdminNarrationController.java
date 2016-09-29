@@ -35,8 +35,8 @@ public class AdminNarrationController {
             @RequestParam Long book) {
 
         Narration narration = new Narration();
-        narration.setBook(bookRepo.findOne(book));
         narration.setContent(content);
+        narration.setBook(bookRepo.findOne(book));
         narration.setNarrator(narratorRepo.findOne(narrator));
         narration.setTheme(themeRepo.findOne(theme));
         narrationRepo.save(narration);
@@ -62,8 +62,8 @@ public class AdminNarrationController {
             @RequestParam Long narrator, @RequestParam Long book) {
 
         Narration narration = narrationRepo.findOne(id);
-        narration.setBook(bookRepo.findOne(book));
         narration.setContent(content);
+        narration.setBook(bookRepo.findOne(book));
         narration.setNarrator(narratorRepo.findOne(narrator));
         narration.setTheme(themeRepo.findOne(theme));
         narrationRepo.save(narration);
