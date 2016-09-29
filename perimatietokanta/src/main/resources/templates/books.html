@@ -6,7 +6,13 @@
         <title>Kirjat</title>
     </head>
     <body>
-        <div>        
+        <a th:href="@{/books}" th:text="Kirjat"></a>
+        <a th:href="@{/narrators}" th:text="Kertojat"></a>
+        <a th:href="@{/themes}" th:text="Teemat"></a>
+        <a th:href="@{/admin}" th:text="Ylläpito"></a>
+        <a th:href="@{/logout}" th:text="Logout"></a>
+        <div>   
+            <br></br>
             <table>
                 <tr>
                     <th>Kirjan nimi</th>

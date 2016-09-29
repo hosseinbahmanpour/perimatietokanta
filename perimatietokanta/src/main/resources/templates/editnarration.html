@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Muokkaa perimätietoa</title>
+    </head>
+    <body>
+        <a th:href="@{/books}" th:text="Kirjat"></a>
+        <a th:href="@{/narrators}" th:text="Kertojat"></a>
+        <a th:href="@{/themes}" th:text="Teemat"></a>
+        <a th:href="@{/admin}" th:text="Ylläpito"></a>
+        <a th:href="@{/logout}" th:text="Logout"></a>
+        <div> 
+            <br></br>
+            <p>Muokkaa perimätietoa</p>
+            <form th:action="@{/admin/editnarration/{narrationId}(narrationId=${narration.id})}" method="POST">
+                <input type="text" size="128" th:placeholder="${narration.content}" name="content"/><br></br><br></br>
+                <select name="book">
+                    <option th:each="book: ${books}" th:value="${book.id}" 
+                            th:text="${book.title}" ></option>
+                </select>
+                <select name="narrator">
+                    <option th:each="narrator: ${narrators}" th:value="${narrator.id}" 
+                            th:text="${narrator.name}" ></option>
+                </select>
+                <select name="theme">
+                    <option th:each="theme: ${themes}" th:value="${theme.id}" 
+                            th:text="${theme.theme}" ></option>
+                </select>          
+            </form>
+        </div>
+    </body>
+</html>

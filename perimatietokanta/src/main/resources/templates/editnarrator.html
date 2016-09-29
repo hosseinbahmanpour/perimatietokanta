@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Muokkaa kirjaa</title>
+        <title>Muokkaa kertojaa</title>
     </head>
     <body>
         <a th:href="@{/books}" th:text="Kirjat"></a>
@@ -11,12 +11,11 @@
         <a th:href="@{/themes}" th:text="Teemat"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
         <a th:href="@{/logout}" th:text="Logout"></a>
-        <div>   
+        <div> 
             <br></br>
-            <p>Muokkaa kirjaa</p>
-            <form th:action="@{/admin/editbook/{bookId}(bookId=${book.id})}" method="POST">
-                <input type="text" th:placeholder="${book.title}" name="title"/><br></br><br></br>
-                <input type="text" th:placeholder="${book.author}" name="author"/><br></br><br></br>
+            <p>Muokkaa kertojaa</p>
+            <form th:action="@{/admin/editnarrator/{narratorId}(narratorId=${narrator.id})}" method="POST">
+                <input type="text" th:placeholder="${narrator.name}" name="name"/><br></br><br></br>
                 <input type="submit" value="Tallenna muutokset"/>            
             </form>
         </div>
