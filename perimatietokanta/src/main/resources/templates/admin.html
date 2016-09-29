@@ -35,7 +35,6 @@
             <p>Perimätieto</p>
             <form th:action="@{/admin/narration}" method="POST">
                 <input type="text" size="128" placeholder="syötä perimätieto" name="content"/><br></br><br></br>
-                <input type="text" placeholder="syötä sivunumero" name="page"/>
                 <select name="book">
                     <option th:each="book: ${books}" th:value="${book.id}" 
                             th:text="${book.title}" ></option>

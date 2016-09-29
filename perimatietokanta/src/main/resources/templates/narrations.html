@@ -9,17 +9,25 @@
         <table>
             <tr>
                 <th>Kertoja</th>
-                <th>Teema</th>
                 <th>Kirja</th>
-                <th>Sivunumero</th>
+                <th>Teema</th>
                 <th>Sisältö</th>
+                <th></th>
+                <th></th>
             </tr>
             <tr th:each="narration : ${narrations}">
                 <td th:text="${narration.narrator.name}">Kertoja</td>
-                <td th:text="${narration.theme.theme}">Teema</td>
                 <td th:text="${narration.book.title}">Kirja</td>
-                <td th:text="${narration.page}">Sivunumero</td>
+                <td th:text="${narration.theme.theme}">Teema</td>
                 <td th:text="${narration.content}">Sisältö</td>
+                <td>
+                    <a th:href="@{/admin/edinarration/{narrationId}(narrationId=${narration.id})}"><input type="submit" value="Muokkaa"/></a>
+                </td>
+                <td>
+                    <form th:action="@{/admin/edinarration/{narrationId}(narrationId=${narration.id})}" th:method="DELETE">
+                        <input type="submit" value="Poista" th:id="${'remove-' + narration.id}"/>
+                    </form>
+                </td>
             </tr>
         </table>
     </body>

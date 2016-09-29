@@ -10,9 +10,19 @@
             <table>
                 <tr>
                     <th>Kertojan nimi</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <tr th:each="narrator : ${narrators}">
                     <td><a th:href="@{/narrators/{narratorId}(narratorId=${narrator.id})}" th:text="${narrator.name}"></a></td>
+                    <td>
+                        <a th:href="@{/admin/editnarrator/{narratorId}(narratorId=${narrator.id})}"><input type="submit" value="Muokkaa"/></a>
+                    </td>
+                    <td>
+                        <form th:action="@{/admin/editnarrator/{narratorId}(narratorId=${narrator.id})}" th:method="DELETE">
+                            <input type="submit" value="Poista" th:id="${'remove-' + narrator.id}"/>
+                        </form>
+                    </td>
                 </tr>
             </table>
         </div>

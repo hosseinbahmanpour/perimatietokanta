@@ -10,9 +10,19 @@
             <table>
                 <tr>
                     <th>Teema</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <tr th:each="theme : ${themes}">
                     <td><a th:href="@{/themes/{themeId}(themeId=${theme.id})}" th:text="${theme.theme}"></a></td>
+                    <td>
+                        <a th:href="@{/admin/edittheme/{themeId}(themeId=${theme.id})}"><input type="submit" value="Muokkaa"/></a>
+                    </td>
+                    <td>
+                        <form th:action="@{/admin/edittheme/{themeId}(themeId=${theme.id})}" th:method="DELETE">
+                            <input type="submit" value="Poista" th:id="${'remove-' + narrator.id}"/>
+                        </form>
+                    </td>
                 </tr>
             </table>
         </div>
