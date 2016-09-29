@@ -43,7 +43,7 @@ public class AdminThemeController {
 
     @RequestMapping(value = "theme/{id}", method = RequestMethod.DELETE)
     public String deleteTheme(@PathVariable Long id) {
-        Collection<Narration> narrations = narrationRepo.findByBook(bookRepo.findOne(id));
+        Collection<Narration> narrations = narrationRepo.findByTheme(themeRepo.findOne(id));
 
         narrations.stream().forEach((n) -> {
             bookRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);

@@ -44,7 +44,7 @@ public class AdminNarratorController {
     @RequestMapping(value = "narrator/{id}", method = RequestMethod.DELETE)
     public String deleteNarrator(@PathVariable Long id) {
 
-        Collection<Narration> narrations = narrationRepo.findByBook(bookRepo.findOne(id));
+        Collection<Narration> narrations = narrationRepo.findByNarrator(narratorRepo.findOne(id));
 
         narrations.stream().forEach((n) -> {
             bookRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
