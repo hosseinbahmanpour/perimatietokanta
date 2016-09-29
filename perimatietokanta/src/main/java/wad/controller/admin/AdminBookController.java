@@ -13,6 +13,8 @@ import wad.domain.Book;
 import wad.domain.Narration;
 import wad.repository.BookRepository;
 import wad.repository.NarrationRepository;
+import wad.repository.NarratorRepository;
+import wad.repository.ThemeRepository;
 
 @Controller
 @RequestMapping(value = "admin")
@@ -23,6 +25,12 @@ public class AdminBookController {
 
     @Autowired
     private NarrationRepository narrationRepo;
+
+    @Autowired
+    private NarratorRepository narratorRepo;
+
+    @Autowired
+    private ThemeRepository themeRepo;
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
     public String createBook(@RequestParam String title,
@@ -39,9 +47,15 @@ public class AdminBookController {
     @RequestMapping(value = "book/{id}", method = RequestMethod.DELETE)
     public String deleteBook(@PathVariable Long id) {
 
-        if (bookRepo.findOne(id).getNarrations().isEmpty()) {
-            bookRepo.delete(id);
-        }
+        Collection<Narration> narrations = narrationRepo.findByBook(bookRepo.findOne(id));
+
+        narrations.stream().forEach((n) -> {
+            narratorRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            themeRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            narrationRepo.delete(n);
+        });
+
+        bookRepo.delete(id);
         return "redirect:/books";
     }
 

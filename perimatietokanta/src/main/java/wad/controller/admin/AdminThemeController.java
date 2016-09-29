@@ -1,5 +1,6 @@
 package wad.controller.admin;
 
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,12 +8,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import wad.domain.Narration;
 import wad.domain.Theme;
+import wad.repository.BookRepository;
+import wad.repository.NarrationRepository;
+import wad.repository.NarratorRepository;
 import wad.repository.ThemeRepository;
 
 @Controller
 @RequestMapping(value = "admin")
 public class AdminThemeController {
+
+    @Autowired
+    private BookRepository bookRepo;
+
+    @Autowired
+    private NarrationRepository narrationRepo;
+
+    @Autowired
+    private NarratorRepository narratorRepo;
 
     @Autowired
     private ThemeRepository themeRepo;
@@ -29,10 +43,15 @@ public class AdminThemeController {
 
     @RequestMapping(value = "theme/{id}", method = RequestMethod.DELETE)
     public String deleteTheme(@PathVariable Long id) {
+        Collection<Narration> narrations = narrationRepo.findByBook(bookRepo.findOne(id));
 
-        if (themeRepo.findOne(id).getNarrations().isEmpty()) {
-            themeRepo.delete(id);
-        }
+        narrations.stream().forEach((n) -> {
+            bookRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            narratorRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            narrationRepo.delete(n);
+        });
+
+        themeRepo.delete(id);
         return "redirect:/themes";
     }
 

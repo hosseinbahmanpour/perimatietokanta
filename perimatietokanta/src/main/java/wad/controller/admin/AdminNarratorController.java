@@ -1,5 +1,6 @@
 package wad.controller.admin;
 
+import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,15 +8,28 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import wad.domain.Narration;
 import wad.domain.Narrator;
+import wad.repository.BookRepository;
+import wad.repository.NarrationRepository;
 import wad.repository.NarratorRepository;
+import wad.repository.ThemeRepository;
 
 @Controller
 @RequestMapping(value = "admin")
 public class AdminNarratorController {
 
     @Autowired
+    private BookRepository bookRepo;
+
+    @Autowired
+    private NarrationRepository narrationRepo;
+
+    @Autowired
     private NarratorRepository narratorRepo;
+
+    @Autowired
+    private ThemeRepository themeRepo;
 
     @RequestMapping(value = "narrator", method = RequestMethod.POST)
     public String createNarrator(@RequestParam String name) {
@@ -30,9 +44,15 @@ public class AdminNarratorController {
     @RequestMapping(value = "narrator/{id}", method = RequestMethod.DELETE)
     public String deleteNarrator(@PathVariable Long id) {
 
-        if (narratorRepo.findOne(id).getNarrations().isEmpty()) {
-            narratorRepo.delete(id);
-        }
+        Collection<Narration> narrations = narrationRepo.findByBook(bookRepo.findOne(id));
+
+        narrations.stream().forEach((n) -> {
+            bookRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            themeRepo.findOne(n.getNarrator().getId()).getNarrations().remove(n);
+            narrationRepo.delete(n);
+        });
+        
+        narratorRepo.delete(id);
         return "redirect:/narrators";
     }
 
