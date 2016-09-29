@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import wad.domain.Narration;
 
 public interface NarrationRepository extends JpaRepository<Narration, Long> {
-    
+
 }

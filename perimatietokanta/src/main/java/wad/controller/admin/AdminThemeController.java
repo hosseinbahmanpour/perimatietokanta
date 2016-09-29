@@ -19,34 +19,36 @@ public class AdminThemeController {
 
     @RequestMapping(value = "theme", method = RequestMethod.POST)
     public String createTheme(@RequestParam String teema) {
-        
+
         Theme theme = new Theme();
         theme.setTheme(teema);
         themeRepo.save(theme);
-        
+
         return "redirect:/themes";
     }
 
     @RequestMapping(value = "theme/{id}", method = RequestMethod.DELETE)
-    public String deleteTheme(@PathVariable Long id) {        
-        themeRepo.delete(id);        
+    public String deleteTheme(@PathVariable Long id) {
+
+        if (themeRepo.findOne(id).getNarrations().isEmpty()) {
+            themeRepo.delete(id);
+        }
         return "redirect:/themes";
     }
 
     @RequestMapping(value = "edittheme/{id}", method = RequestMethod.GET)
-    public String viewThemeEditor(@PathVariable Long id, Model model) {        
-        model.addAttribute("theme", themeRepo.findOne(id));        
+    public String viewThemeEditor(@PathVariable Long id, Model model) {
+        model.addAttribute("theme", themeRepo.findOne(id));
         return "edittheme";
     }
 
     @RequestMapping(value = "edittheme/{id}", method = RequestMethod.POST)
     public String editTheme(@PathVariable Long id, @RequestParam String theme, Model model) {
-        
+
         Theme teema = themeRepo.findOne(id);
         teema.setTheme(theme);
         themeRepo.save(teema);
-        
+
         return "redirect:/themes";
     }
 }
-

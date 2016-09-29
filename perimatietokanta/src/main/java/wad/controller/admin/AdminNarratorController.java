@@ -19,34 +19,36 @@ public class AdminNarratorController {
 
     @RequestMapping(value = "narrator", method = RequestMethod.POST)
     public String createNarrator(@RequestParam String name) {
-        
+
         Narrator narrator = new Narrator();
         narrator.setName(name);
         narratorRepo.save(narrator);
-        
+
         return "redirect:/narrators";
     }
 
     @RequestMapping(value = "narrator/{id}", method = RequestMethod.DELETE)
-    public String deleteNarrator(@PathVariable Long id) {        
-        narratorRepo.delete(id);        
+    public String deleteNarrator(@PathVariable Long id) {
+
+        if (narratorRepo.findOne(id).getNarrations().isEmpty()) {
+            narratorRepo.delete(id);
+        }
         return "redirect:/narrators";
     }
 
     @RequestMapping(value = "editnarrator/{id}", method = RequestMethod.GET)
-    public String viewNarratorEditor(@PathVariable Long id, Model model) {        
-        model.addAttribute("narrator", narratorRepo.findOne(id));        
+    public String viewNarratorEditor(@PathVariable Long id, Model model) {
+        model.addAttribute("narrator", narratorRepo.findOne(id));
         return "editnarrator";
     }
 
     @RequestMapping(value = "editnarrator/{id}", method = RequestMethod.POST)
     public String editNarrator(@PathVariable Long id, @RequestParam String name, Model model) {
-        
+
         Narrator narrator = narratorRepo.findOne(id);
         narrator.setName(name);
         narratorRepo.save(narrator);
-        
+
         return "redirect:/narrators";
     }
 }
-
