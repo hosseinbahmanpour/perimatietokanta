@@ -8,8 +8,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 @Entity
 public class Book extends AbstractPersistable<Long> {
     
-    private String title;
-    
+    private String title;    
     private String author;
     
     @OneToMany(mappedBy = "book")
