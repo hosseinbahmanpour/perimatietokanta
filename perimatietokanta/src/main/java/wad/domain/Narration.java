@@ -3,20 +3,24 @@ package wad.domain;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 public class Narration extends AbstractPersistable<Long> {
 
+    @NotBlank
     private String content;
+
+    @NotBlank
     private int page;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Book book;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Narrator narrator;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Theme theme;
 
@@ -59,4 +63,4 @@ public class Narration extends AbstractPersistable<Long> {
     public void setTheme(Theme theme) {
         this.theme = theme;
     }
-  }
+}

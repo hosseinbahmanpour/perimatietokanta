@@ -20,10 +20,13 @@ public class DefaultController {
     
     @Autowired
     private BookRepository bookRepo;
+    
     @Autowired
     private NarrationRepository narrationRepo;
+    
     @Autowired
     private NarratorRepository narratorRepo;
+    
     @Autowired
     private ThemeRepository themeRepo;
 

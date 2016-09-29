@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Muokkaa kirjaa</title>
+    </head>
+    <body>
+        <div>            
+            <p>Muokkaa kirjaa</p>
+            <form th:action="@{/admin/editbook/{bookId}(bookId=${book.id})}" method="POST">
+                <input type="text" placeholder="vaihda kirjan nimi" name="title"/><br></br><br></br>
+                <input type="text" placeholder="vaihda kirjailijan nimi" name="author"/><br></br><br></br>
+                <input type="submit" value="Tallenna muutokset"/>            
+            </form>
+        </div>
+    </body>
+</html>

@@ -17,13 +17,17 @@ public class ThemeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String listThemes(Model model) {
+       
         model.addAttribute("themes", themeRepo.findAll());
+        
         return "themes";
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public String getTheme(@PathVariable Long id, Model model) {
+        
         model.addAttribute("narrations", themeRepo.findOne(id).getNarrations());
+        
         return "narrations";
     }
 }

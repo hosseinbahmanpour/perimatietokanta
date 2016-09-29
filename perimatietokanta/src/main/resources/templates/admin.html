@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>Admin</title>
     </head>
     <body>
-        <div> 
+        <div>
+            <p>Kirja</p>
             <form th:action="@{/admin/book}" method="POST">
-                <input type="text" value="title" name="title"/>
-                <input type="text" value="author" name="author"/>
+                <input type="text" placeholder="syötä kirjan nimi" name="title"/>
+                <input type="text" placeholder="syötä kirjailijan nimi" name="author"/>
                 <input type="submit" value="Luo uusi kirja"/>            
             </form>
         </div>
         <div> 
+            <br></br>
+            <p>Kertoja</p>
             <form th:action="@{/admin/narrator}" method="POST">
-                <input type="text" value="name" name="name"/>
+                <input type="text" placeholder="syötä kertojan nimi" name="name"/>
                 <input type="submit" value="Luo uusi kertoja"/>            
             </form>
         </div>
-        <div> 
+        <div>
+            <br></br> 
+            <p>Teema</p>
             <form th:action="@{/admin/theme}" method="POST">
-                <input type="text" value="theme" name="teema"/>
+                <input type="text" placeholder="syötä teema" name="teema"/>
                 <input type="submit" value="Luo uusi teema"/>            
             </form>
         </div>
         <div>
+            <br></br>
+            <p>Perimätieto</p>
             <form th:action="@{/admin/narration}" method="POST">
-                <input type="text" value="content" name="content"/>
-                <input type="text" value="page" name="page"/>
+                <input type="text" size="128" placeholder="syötä perimätieto" name="content"/><br></br><br></br>
+                <input type="text" placeholder="syötä sivunumero" name="page"/>
                 <select name="book">
                     <option th:each="book: ${books}" th:value="${book.id}" 
                             th:text="${book.title}" ></option>

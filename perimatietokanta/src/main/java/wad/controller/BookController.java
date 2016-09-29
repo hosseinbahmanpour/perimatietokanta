@@ -17,13 +17,17 @@ public class BookController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String listBooks(Model model) {
+        
         model.addAttribute("books", bookRepo.findAll());
+        
         return "books";
     }
     
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public String getBook(@PathVariable Long id, Model model) {
+        
         model.addAttribute("narrations", bookRepo.findOne(id).getNarrations());
+        
         return "narrations";
     }
 }
