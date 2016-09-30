@@ -1,3 +1,4 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL}
+    url:  postgres://rfwnxqgsfzgube:XcAwmlDTMuDv7oE7htJ-ScqMJz@ec2-54-243-218-37.compute-1.amazonaws.com:5432/d8f0bgh86ihp9c
+
