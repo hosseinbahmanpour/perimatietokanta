@@ -10,6 +10,7 @@
         <a th:href="@{/books}" th:text="Kirjat"></a>
         <a th:href="@{/narrators}" th:text="Kertojat"></a>
         <a th:href="@{/themes}" th:text="Teemat"></a>
+        <a th:href="@{/search}" th:text="Haku"></a>
         <a th:href="@{/admin}" th:text="Ylläpito"></a>
         <div> 
             <br></br>
@@ -17,16 +18,16 @@
             <form th:action="@{/admin/editnarration/{narrationId}(narrationId=${narration.id})}" method="POST">
                 <input type="text" size="128" th:value="${narration.content}" name="content"/><br></br><br></br>
                 <select name="book">
-                    <option th:each="book: ${books}" th:value="${book.id}" 
-                            th:text="${book.title}" ></option>
+                    <option th:value="${book.id}" th:text="${book.title}"/>
+                    <option th:each="book: ${books}" th:value="${book.id}" th:text="${book.title}" ></option>
                 </select>
                 <select name="narrator">
-                    <option th:each="narrator: ${narrators}" th:value="${narrator.id}" 
-                            th:text="${narrator.name}" ></option>
+                    <option th:value="${narrator.id}" th:text="${narrator.name}"/>
+                    <option th:each="narrator: ${narrators}" th:value="${narrator.id}" th:text="${narrator.name}" ></option>
                 </select>
                 <select name="theme">
-                    <option th:each="theme: ${themes}" th:value="${theme.id}" 
-                            th:text="${theme.theme}" ></option>
+                    <option th:value="${theme.id}" th:text="${theme.theme}"/>
+                    <option th:each="theme: ${themes}" th:value="${theme.id}" th:text="${theme.theme}" ></option>
                 </select>       
                 <input type="submit" value="Tallenna muutokset"/> 
             </form>

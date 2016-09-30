@@ -9,7 +9,8 @@ import wad.domain.Theme;
 
 public interface NarrationRepository extends JpaRepository<Narration, Long> {
 
-    Collection<Narration> findByBook(Book book);
-    Collection<Narration> findByNarrator(Narrator narrator);
-    Collection<Narration> findByTheme(Theme theme);
+    public Collection<Narration> findByBook(Book book);
+    public Collection<Narration> findByNarrator(Narrator narrator);
+    public Collection<Narration> findByTheme(Theme theme);
+    public Collection<Narration> findByContentContainingIgnoreCase(String keyword);
 }

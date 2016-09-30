@@ -18,6 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/books/**").permitAll()
                 .antMatchers("/narrators/**").permitAll()
                 .antMatchers("/themes/**").permitAll()
+                .antMatchers("/search/").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();                
          http.formLogin().permitAll().and()
@@ -28,6 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // ohjelman muokkaustoiminnot on tarkoitettu vain adminille
         auth.inMemoryAuthentication()
-                .withUser("hossein").password("erittäinsalainen").authorities("ADMIN");
+                .withUser("resalat").password("myw33kww4s4bsolut3ly4wful!").authorities("ADMIN");
     }
 }

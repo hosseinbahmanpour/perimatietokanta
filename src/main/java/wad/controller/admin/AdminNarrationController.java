@@ -54,6 +54,9 @@ public class AdminNarrationController {
     public String viewNarrationEditor(@PathVariable Long id, Model model) {
 
         model.addAttribute("narration", narrationRepo.findOne(id));
+        model.addAttribute("book", narrationRepo.findOne(id).getBook());        
+        model.addAttribute("narrator", narrationRepo.findOne(id).getNarrator());
+        model.addAttribute("theme", narrationRepo.findOne(id).getTheme());
         model.addAttribute("books", bookRepo.findAll());
         model.addAttribute("narrators", narratorRepo.findAll());
         model.addAttribute("themes", themeRepo.findAll());
