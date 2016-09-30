@@ -1,2 +1,2 @@
 
-web: java -jar target/perimatietokanta.jar
+web: java -jar target/*.jar
