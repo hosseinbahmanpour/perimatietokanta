@@ -49,11 +49,11 @@ public class DefaultController {
         narratorRepo.save(n1);
 
         Narrator n2 = new Narrator();
-        n1.setName("Arnold");
+        n2.setName("Arnold");
         narratorRepo.save(n2);
 
         Narrator n3 = new Narrator();
-        n1.setName("Stallone");
+        n3.setName("Stallone");
         narratorRepo.save(n3);
 
         Theme t1 = new Theme();
