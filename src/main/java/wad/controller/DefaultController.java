@@ -72,31 +72,31 @@ public class DefaultController {
         narrationRepo.save(non1);
 
         Narration non2 = new Narration();
-        non1.setContent("I'll be back.");
-        non1.setBook(b1);
-        non1.setTheme(t1);
-        non1.setNarrator(n2);
+        non2.setContent("I'll be back.");
+        non2.setBook(b1);
+        non2.setTheme(t1);
+        non2.setNarrator(n2);
         narrationRepo.save(non2);
 
         Narration non3 = new Narration();
-        non1.setContent("Stupid is what stupid does");
-        non1.setBook(b1);
-        non1.setTheme(t1);
-        non1.setNarrator(n3);
+        non3.setContent("Stupid is what stupid does");
+        non3.setBook(b1);
+        non3.setTheme(t1);
+        non3.setNarrator(n3);
         narrationRepo.save(non3);
 
         Narration non4 = new Narration();
-        non1.setContent("Sting like a bee!");
-        non1.setBook(b2);
-        non1.setTheme(t2);
-        non1.setNarrator(n1);
+        non4.setContent("Sting like a bee!");
+        non4.setBook(b2);
+        non4.setTheme(t2);
+        non4.setNarrator(n1);
         narrationRepo.save(non4);
 
         Narration non5 = new Narration();
-        non1.setContent("Hasta la vista, baby.");
-        non1.setBook(b1);
-        non1.setTheme(t1);
-        non1.setNarrator(n2);
+        non5.setContent("Hasta la vista, baby.");
+        non5.setBook(b1);
+        non5.setTheme(t1);
+        non5.setNarrator(n2);
         narrationRepo.save(non5);
     }
 
